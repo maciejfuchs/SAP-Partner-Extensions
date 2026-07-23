@@ -6,17 +6,15 @@ A collection of Claude Code skills for querying and visualizing SAP Store produc
 
 ## sap-store-extensions
 
-Search and browse SAP Store extensions by **publisher/partner name** or **industry**, with an optional "Works With" product filter. Results are rendered as a styled HTML table and automatically opened in the browser.
+Search and browse SAP Store extensions by **publisher/partner name** or **industry**, with an optional "Works With" product filter. 
 
 ### What it does
 
 - Searches the SAP Store product catalog via the MXP Production API
 - Supports two search modes:
-  - **Publisher mode** — find all products from a specific partner (e.g. `Avalara`, `Vistex`, `NTT DATA`)
+  - **Publisher mode** — find all products from a specific partner
   - **Industry mode** — find all products tagged for a given industry (e.g. `Retail`, `Utilities`, `Finance`)
 - Applies a "Works With" filter (default: `SAP S/4HANA Cloud Public Edition`) to scope results to a specific SAP platform
-- Renders results as a styled HTML table with SAP Fiori colors, including industry tags, Works With tags, solution type badges, and direct SAP Store links
-- Opens the output file in the browser automatically
 
 ### Usage
 
@@ -26,10 +24,10 @@ Search and browse SAP Store extensions by **publisher/partner name** or **indust
 
 **Examples:**
 ```
-/sap-store-extensions Avalara                             # publisher, default Works With filter
-/sap-store-extensions Retail                              # industry, default Works With filter
-/sap-store-extensions Retail works with: SAP ERP          # industry, custom Works With filter
-/sap-store-extensions Avalara all                         # publisher, no Works With filter
+/sap-store-extensions <Publisher Name>                           # publisher, default Works With filter
+/sap-store-extensions <Industry Name>                            # industry, default Works With filter
+/sap-store-extensions <Industry Name> with: SAP ERP             # industry, custom Works With filter
+/sap-store-extensions <Publisher Name> all                      # publisher, no Works With filter
 ```
 
 ### Output
@@ -85,3 +83,9 @@ Claude Code will automatically discover skills placed in `~/.claude/skills/`.
 - Claude Code (claude-sonnet-latest)
 - MXP MCP server (Production)
 - macOS (browser open via `open` command)
+
+---
+
+## License
+
+Copyright 2026 SAP SE or an SAP affiliate company and automation-pilot-agent-skills contributors. See LICENSE for details. Third-party component information is available via the REUSE tool.
