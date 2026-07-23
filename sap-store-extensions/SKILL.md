@@ -1,11 +1,11 @@
 ---
 name: sap-store-extensions
-description: Show, list, or find SAP Store extensions, products, or solutions for a specific partner/publisher or industry (e.g. "show extensions for NTT DATA", "list Finance extensions on SAP Store"). Supports an optional Works With filter (default: SAP S/4HANA Cloud Public Edition). Queries MXP Production and renders results as a styled HTML table opened in the browser.
+description: Show, list, or find SAP Store extensions, products, or solutions for a specific partner/publisher or industry (e.g. "show extensions for NTT DATA", "list Finance extensions on SAP Store"). Supports an optional Works With filter (default: SAP S/4HANA Cloud Public Edition). Queries MXP Production and renders results as a markdown table in the chat.
 context: fork
 user-invocable: true
 ---
 
-Query MXP Production for SAP Store extensions by publisher/partner name or industry, optionally filtered by "Works With" product, and render results as a styled HTML table, then open in the browser.
+Query MXP Production for SAP Store extensions by publisher/partner name or industry, optionally filtered by "Works With" product, and render results as a markdown table in the chat.
 
 ## Usage
 
@@ -52,34 +52,18 @@ The argument `$ARGUMENTS` is either a publisher name or an industry name, option
    - Fields: `product_name`, `publisher_name`, `product_description_short`, `solution_type`, `works_with`, `storefront_url`, `industry.name`
    - Top: 100
 
-4. **Derive industry tags per product** from `product.industry[].name` (already returned in step 3 via `industry.name` subfield selection).
+4. **Derive industry tags** from `product.industry[].name` (returned in step 3). Join multiple values with `, `.
 
-5. **Generate the output filename** as `~/<slug>_extensions.html` where `<slug>` is the primary term lowercased with spaces replaced by underscores.
+5. **Output a markdown table** in the chat with these columns:
 
-6. **Write the HTML file** using hand-coded CSS with SAP Fiori colors (do NOT use UI5 Web Components via CDN):
+   | # | Product | Partner | Type | Industry | SAP Store |
+   |---|---------|---------|------|----------|-----------|
 
-   **Filter bar** (below `<h1>`): show active Works With filter as a styled chip. If no filter, show "Showing all products".
-   - Filter bar: bg `#f0f4fe`, border `1px solid #c5dcf7`, border-radius `6px`, padding `8px 12px`
-   - Chip: bg `#0064d9`, color `#fff`, border-radius `12px`, padding `2px 10px`, font-size `0.8rem`
+   - **Product**: product name
+   - **Partner**: publisher name
+   - **Type**: solution type (shorten "Extensions and Add-ons" → `Extension`, "APIs & Technical Components" → `API`)
+   - **Industry**: comma-separated industry names from step 4
+   - **SAP Store**: `[↗ Open](storefront_url)`
 
-   **Columns:** `#`, `Product` (bold), `Partner` (own `<td>`, never nested), `Type` (badge), `Description`, `Industry` (green tags — one per `industry[].name` value), `Works With` (purple tags — split on commas; highlight the matching value in darker purple if filter active), `SAP Store` (↗ Open link)
-
-   **CSS color values:**
-   - Header bg: `#0064d9`, text: `#fff`, col border: `#0058c0`
-   - Row hover: `#f0f4fe`
-   - Badge Extensions: bg `#e3f0ff`, text `#0064d9`, border `#c5dcf7`
-   - Badge APIs: bg `#fef0d9`, text `#c44300`, border `#f5d5a3`
-   - Industry tag: bg `#f0faf0`, text `#256f3a`, border `#b5debb`
-   - Works With tag: bg `#f5f0fd`, text `#5a2a82`, border `#d5b8f5`
-   - Works With tag **highlighted**: bg `#7300cc`, text `#fff`, border `#5a008f`
-   - Link button: bg `#0064d9`, text `#fff`, hover `#0053b3`
-   - Page bg: `#f5f6f7`, card bg: `#fff`
-   - Card: `border-radius: 8px`, `box-shadow: 0 0 0 1px #e5e5e5, 0 2px 8px rgba(0,0,0,0.08)`
-
-   **Page title:**
-   - Industry mode: `<Industry> Extensions on SAP Store`
-   - Publisher mode: `<Publisher> Extensions on SAP Store`
-
-   **Footer:** product count | partner count | Works With filter (if active) | data source | date
-
-7. **Open the file** in the browser using `open <filepath>`.
+6. **After the table**, output a one-line summary:
+   `> X products from Y partners` — append ` · Works With: <value>` if filter is active.
