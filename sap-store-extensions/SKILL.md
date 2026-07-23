@@ -1,6 +1,6 @@
 ---
 name: sap-store-extensions
-description: Show, list, or find SAP Store extensions, products, or solutions for a specific partner/publisher or industry (e.g. "show extensions for NTT DATA", "list Finance extensions on SAP Store"). Supports an optional Works With filter (default: SAP S/4HANA Cloud Public Edition). Queries MXP Production and renders results as a markdown table in the chat.
+description: Show, list, or find SAP Store extensions, products, or solutions for a specific partner/publisher or industry. Supports an optional Works With filter (default: SAP S/4HANA Cloud Public Edition). Queries MXP Production and renders results as a markdown table in the chat.
 context: fork
 user-invocable: true
 ---
@@ -14,7 +14,7 @@ Query MXP Production for SAP Store extensions by publisher/partner name or indus
 ```
 
 Examples:
-- `/sap-store-extensions NTT DATA` — publisher search, default Works With filter (SAP S/4HANA Cloud Public Edition)
+- `/sap-store-extensions <partner name>` — publisher search, default Works With filter (SAP S/4HANA Cloud Public Edition)
 - `/sap-store-extensions Finance` — industry search, default Works With filter
 - `/sap-store-extensions Finance works with: SAP ERP` — industry search, custom Works With filter
 - `/sap-store-extensions Finance all` — industry search, no Works With filter
