@@ -89,3 +89,7 @@ Claude Code will automatically discover skills placed in `~/.claude/skills/`.
 ## License
 
 Copyright 2026 SAP SE or an SAP affiliate company and automation-pilot-agent-skills contributors. See LICENSE for details. Third-party component information is available via the REUSE tool.
+
+## License
+
+Maciej Fuchs
