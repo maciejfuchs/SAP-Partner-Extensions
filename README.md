@@ -92,4 +92,4 @@ Copyright 2026 SAP SE or an SAP affiliate company and automation-pilot-agent-ski
 
 ## Author
 
-Maciej Fuchs.
+Maciej Fuchs
