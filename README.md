@@ -32,17 +32,13 @@ Search and browse SAP Store extensions by **publisher/partner name** or **indust
 
 ### Output
 
-A self-contained HTML file saved to `~/<search-term>_extensions.html` and opened in your default browser.
+A self-contained HTML file saved to `~/Output/<search-term>_extensions.html` and opened in your default browser.
 
 ---
 
 ## Prerequisites
 
-### 1. Claude Code
-
-Install Claude Code CLI: https://docs.anthropic.com/en/docs/claude-code
-
-### 2. MXP MCP Server
+### 1. MXP MCP Server
 
 This skill queries SAP's internal MXP (MXPresso) content platform via an MCP server. You need access to the MXP MCP server configured in your Claude Code settings.
 
@@ -66,15 +62,9 @@ This skill queries SAP's internal MXP (MXPresso) content platform via an MCP ser
 
 **Worksphere used:** `abd0b7ce-ccf3-4abb-895a-8e5f20c2706a` (SAP Store product catalog)
 
-### 3. Skill installation
+### 2. Skill installation
 
-Copy the skill folder into your Claude Code skills directory:
-
-```bash
-cp -r sap-store-extensions ~/.claude/skills/sap-store-extensions
-```
-
-Claude Code will automatically discover skills placed in `~/.claude/skills/`.
+Install with the SAP Joule Desktop
 
 ---
 
