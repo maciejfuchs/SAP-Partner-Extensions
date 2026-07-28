@@ -1,6 +1,6 @@
-# Claude Skills — SAP Store Extensions
+# SAP Store Extensions
 
-A collection of Claude Code skills for querying and visualizing SAP Store product data.
+A collection of skills for querying and visualizing SAP Store product data.
 
 ---
 
@@ -28,11 +28,8 @@ Search and browse SAP Store extensions by **publisher/partner name** or **indust
 /sap-store-extensions <Industry Name>                            # industry, default Works With filter
 /sap-store-extensions <Industry Name> with: SAP ERP             # industry, custom Works With filter
 /sap-store-extensions <Publisher Name> all                      # publisher, no Works With filter
+
 ```
-
-### Output
-
-A self-contained HTML file saved to `~/Output/<search-term>_extensions.html` and opened in your default browser.
 
 ---
 
@@ -44,18 +41,8 @@ This skill queries SAP's internal MXP (MXPresso) content platform via an MCP ser
 
 **Server name:** `mxp-mcp`
 
-**Configuration** — add to your `~/.claude/claude_desktop_config.json` or Claude Code MCP settings:
+**Configuration** — add to your SAP Joule Desktop skills
 
-```json
-{
-  "mcpServers": {
-    "mxp-mcp": {
-      "command": "<path-to-mxp-mcp-server>",
-      "args": []
-    }
-  }
-}
-```
 
 > Contact your SAP internal tooling team for the MXP MCP server binary and access credentials. The server connects to MXP Production at:
 > `https://acms-gateway.cfapps.eu10-004.hana.ondemand.com`
@@ -70,7 +57,6 @@ Install with the SAP Joule Desktop
 
 ## Tested with
 
-- Claude Code (claude-sonnet-latest)
 - MXP MCP server (Production)
 - macOS (browser open via `open` command)
 
